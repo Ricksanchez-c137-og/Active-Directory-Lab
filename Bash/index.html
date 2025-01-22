@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bash Scripting for Cybersecurity</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 class="fade-in">Bash Scripting - The Heart of Linux Automation</h1>
+    </header>
+
+    <main>
+        <section class="fade-in">
+            <p>
+                **Since the main focus here is cybersecurity**, we will explore how **Bash scripting** is used for **automation, hacking, penetration testing, and security analysis**.
+            </p>
+        </section>
+
+        <section class="fade-in">
+            <h2> What is Bash?</h2>
+            <p>Bash (**Bourne Again Shell**) is the default shell for most **Linux distributions**. It allows users to interact with the system using **commands and scripts**, making it a powerful tool for **automation and security testing**.</p>
+        </section>
+
+        <section class="fade-in">
+            <h2>🐧 Bash in Linux</h2>
+            <p>Bash is deeply integrated into Linux. It is used for:</p>
+            <ul>
+                <li> **Automating tasks** - Cron jobs, system maintenance, backups.</li>
+                <li> **System administration** - User management, log analysis, and permissions.</li>
+                <li> **Networking** - Managing servers, SSH automation, and packet capturing.</li>
+                <li> **Process management** - Monitoring system resources and managing services.</li>
+            </ul>
+        </section>
+
+        <section class="fade-in">
+            <h2>🔐 Bash for Cybersecurity</h2>
+            <p>Bash scripting plays a major role in **offensive and defensive cybersecurity**. Here’s how:</p>
+            <ul>
+                <li> **Penetration Testing** - Automating brute force attacks, reconnaissance, and exploitation.</li>
+                <li> **Forensics & Incident Response** - Extracting logs, scanning malware, and monitoring network traffic.</li>
+                <li> **Payload Delivery** - Used in **Trojan scripts, persistence mechanisms, and backdoors**.</li>
+                <li> **Firewall Automation** - Creating and managing **iptables** rules for security.</li>
+                <li> **Network Reconnaissance** - Automating **Nmap scans** and **port enumeration**.</li>
+            </ul>
+        </section>
+
+        <section class="fade-in">
+            <h2> Common Bash Commands</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>ls</code></td>
+                        <td>List directory contents</td>
+                    </tr>
+                    <tr>
+                        <td><code>cat file.txt</code></td>
+                        <td>View the contents of a file</td>
+                    </tr>
+                    <tr>
+                        <td><code>chmod +x script.sh</code></td>
+                        <td>Make a script executable</td>
+                    </tr>
+                    <tr>
+                        <td><code>grep "error" logfile.txt</code></td>
+                        <td>Search for keywords in a file</td>
+                    </tr>
+                    <tr>
+                        <td><code>netstat -tulnp</code></td>
+                        <td>View active network connections</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="fade-in">
+            <h2> Bash Scripting Basics</h2>
+            <p>Here’s a simple **Bash script** to print "Hello, World!":</p>
+            <pre>
+<code>#!/bin/bash
+echo "Hello, World!"
+</code>
+            </pre>
+            <p>To run the script:</p>
+            <pre>
+<code>chmod +x hello.sh
+./hello.sh
+</code>
+            </pre>
+        </section>
+
+        <section class="fade-in">
+            <h2> Automating a Network Scan</h2>
+            <p>This **Bash script** automates a network scan using **Nmap**:</p>
+            <pre>
+<code>#!/bin/bash
+echo "Enter target IP:"
+read IP
+nmap -sV -A $IP
+</code>
+            </pre>
+        </section>
+
+        <section class="fade-in">
+            <h2> Getting Started with Bash</h2>
+            <p>Bash comes **pre-installed** on all Linux distributions. If you're using **Windows**, install **Git Bash** or **WSL (Windows Subsystem for Linux)**.</p>
+            <a href="https://www.gnu.org/software/bash/" class="download-btn">Learn More</a>
+        </section>
+
+        <button id="scrollToTop">⬆ Back to Top</button>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
