@@ -45,3 +45,9 @@ So basically im a huge fan of Networks and Networking, and especially Active Dir
     <br/>
     <strong>Where do you wanna start ... ?</strong>
 <ul>
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Day 2 
+
+Lets build a <strong> web app</strong>
