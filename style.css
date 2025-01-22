@@ -1,0 +1,103 @@
+/* Dark Theme by Default */
+:root {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --accent-color: #34d399;
+    --button-bg: #252525;
+    --button-hover: #454545;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #34d399, #059669);
+    padding: 20px;
+    color: white;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+#themeToggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 8px 12px;
+    background: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+#themeToggle:hover {
+    background: var(--button-hover);
+}
+
+/* Navigation Bar */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #1f1f1f;
+}
+
+nav li {
+    margin: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 8px 15px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--accent-color);
+    border-radius: 5px;
+}
+
+/* Content Section */
+main {
+    padding: 30px;
+}
+
+section {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Light Mode */
+.light-mode {
+    --background-color: #f5f5f5;
+    --text-color: #121212;
+    --button-bg: #ddd;
+    --button-hover: #bbb;
+}
