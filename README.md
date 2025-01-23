@@ -100,3 +100,10 @@ After running the above command, you’ll get a new folder named <app-name> with
 ├── postcss.config.js
 └── next.config.js
 ```
+to run this project <strong>cd</strong> into the project folder and trun this command <br/>
+
+```bash
+    npm run install --force (the first time only)
+    # second command 
+    npm run dev # to start the development server
+```
