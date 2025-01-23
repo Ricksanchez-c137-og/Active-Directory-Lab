@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Azure Services Data
     const services = [
         { name: "Virtual Machines", description: "Create and manage VMs in the cloud." },
         { name: "App Services", description: "Host and manage web applications." },
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Azure Bastion", description: "Secure RDP/SSH access to VMs." }
     ];
 
-    // Generate Table Rows
     const tableBody = document.getElementById("services-table");
 
     services.forEach(service => {
@@ -26,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         tableBody.appendChild(row);
     });
 
-    // Scroll Reveal Effect
     const fadeInElements = document.querySelectorAll(".fade-in");
 
     const observer = new IntersectionObserver(entries => {

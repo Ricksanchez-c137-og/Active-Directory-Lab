@@ -1,4 +1,3 @@
-/* Global Styles */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -8,7 +7,7 @@ body {
     text-align: center;
 }
 
-/* Header */
+
 .header {
     background: linear-gradient(135deg, #007FFF, #0052CC);
     padding: 20px;
@@ -18,7 +17,7 @@ body {
     animation: fadeIn 1.5s ease-in-out;
 }
 
-/* Sections */
+
 section {
     max-width: 900px;
     margin: 40px auto;
@@ -33,7 +32,7 @@ section:hover {
     transform: scale(1.02);
 }
 
-/* Table */
+
 .table-container {
     overflow-x: auto;
 }
@@ -59,7 +58,6 @@ tr:hover {
     transition: 0.3s;
 }
 
-/* Fade-in Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -75,7 +73,6 @@ tr:hover {
     animation: fadeIn 1.5s ease-in-out;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     section {
         width: 90%;
