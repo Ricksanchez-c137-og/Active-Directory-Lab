@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PowerShell Scripting</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Power + Shell = Absolute Domination of Windows</h1>
+    <p>Learn more about this powerful scripting tool in the context of cybersecurity.</p>
+  </header>
+
+  <!-- Lesson Section -->
+  <section class="fade-in">
+    <h2>What is PowerShell?</h2>
+    <p>
+      PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language,
+      and a configuration management framework. It runs on Windows, Linux, and macOS.
+    </p>
+  </section>
+
+  <!-- Table Section -->
+  <section class="fade-in table-section">
+    <h2>Common PowerShell Commands</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody id="commands-table">
+        <!-- JavaScript will populate this table -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Tips Section -->
+  <section class="fade-in">
+    <h2>Why Learn PowerShell for Cybersecurity?</h2>
+    <ul>
+      <li>Automate tasks and streamline workflows.</li>
+      <li>Perform deep system administration and forensics.</li>
+      <li>Create scripts to detect and respond to threats.</li>
+      <li>Manage remote systems for large-scale environments.</li>
+    </ul>
+  </section>
+
+  <!-- Scripting Examples Section -->
+  <section class="fade-in example-section">
+    <h2>Sample Script</h2>
+    <pre>
+<code># This script lists all processes and filters for a specific one
+Write-Host "Enter a process name:"
+$proc = Read-Host
+Get-Process | Where-Object { $_.ProcessName -like "*$proc*" }
+</code>
+    </pre>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
