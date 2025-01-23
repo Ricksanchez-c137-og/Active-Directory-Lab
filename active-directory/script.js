@@ -22,7 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2>Windows Server Fundamentals</h2>
                 <p>Windows Server provides robust enterprise-level network services and infrastructure management.</p>
             `,
-            // Add more section contents as needed
+            'group-policy': `
+                <h2>Group Policy Management</h2>
+                <p>Group Policy is a feature of the Microsoft Windows NT family of operating systems that controls the working environment of user accounts and computer accounts.</p>
+            `,
+            'powershell': `
+                <h2>PowerShell Scripting</h2>
+                <p>PowerShell is a task automation and configuration management framework from Microsoft, consisting of a command-line shell and associated scripting language.</p>
+            `,
+            'dns': `
+                <h2>DNS Management</h2>
+                <p>The Domain Name System (DNS) is a hierarchical and decentralized naming system for computers, services, or other resources connected to the Internet or a private network.</p>
+            `,
         };
 
         content.innerHTML = sectionContent[section] || 
