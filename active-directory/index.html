@@ -5,6 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Active Directory and Windows Server Internals</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-blue: #005A9C;
+            --secondary-blue: #0078D7;
+            --background-gray: #F0F0F0;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .top-nav {
+            background-color: var(--secondary-blue);
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .top-nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .top-nav ul li {
+            margin: 0 10px;
+        }
+
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -12,28 +100,28 @@
             <h1 class="fade-in">Active Directory and Windows Server Internals</h1>
             <p class="subtitle">Comprehensive Guide to Enterprise IT Infrastructure</p>
         </header>
-
-        <nav class="sidebar">
+        
+        <nav class="top-nav">
             <ul>
-                <li><a href="#" data-section="active-directory">Active Directory</a></li>
-                <li><a href="#" data-section="windows-server">Windows Server</a></li>
-                <li><a href="#" data-section="group-policy">Group Policy</a></li>
-                <li><a href="#" data-section="powershell">PowerShell</a></li>
-                <li><a href="#" data-section="dns">DNS</a></li>
-                <li><a href="#" data-section="dhcp">DHCP</a></li>
-                <li><a href="#" data-section="file-server">File Server</a></li>
-                <li><a href="#" data-section="print-server">Print Server</a></li>
-                <li><a href="#" data-section="iis">IIS</a></li>
-                <li><a href="#" data-section="certificate-authority">Certificate Authority</a></li>
+                <li><a href="active-directory/index.html">Active Directory</a></li>
+                <li><a href="windows-server/index.html">Windows Server</a></li>
+                <li><a href="group-policy/index.html">Group Policy</a></li>
+                <li><a href="powershell/index.html">PowerShell</a></li>
+                <li><a href="dns/index.html">DNS</a></li>
+                <li><a href="dhcp/index.html">DHCP</a></li>
+                <li><a href="file-server/index.html">File Server</a></li>
+                <li><a href="print-server/index.html">Print Server</a></li>
+                <li><a href="iis/index.html">IIS</a></li>
+                <li><a href="certificate-authority/index.html">Certificate Authority</a></li>
             </ul>
         </nav>
-
+        
         <main id="content" class="main-content">
             <section id="welcome" class="active">
-                <p>Select a topic from the sidebar to dive deep into Windows Server technologies and Active Directory infrastructure.</p>
+                <p>Select a topic from the top navigation bar to dive deep into Windows Server technologies and Active Directory infrastructure.</p>
             </section>
         </main>
-
+        
         <footer>
             <p>&copy; 2025 vaxeneLabs</p>
         </footer>

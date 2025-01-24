@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+     <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Active Directory DHCP</title>
+            <link rel="stylesheet" href="style.css">
+            <script src="script.js" defer></script>
+        </head>
+        <body>
+            <header>
+                <h1>
+                    Active Directory DHCP
+                </h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#about">About DHCP</a>
+                        </li>
+                        <li>
+                            <a href="#features">Key Features</a>
+                        </li>
+                        <li>
+                            <a href="#deployment">Deployment</a>
+                        </li>
+                        <li>
+                            <a href="#configuration">Configuration</a>
+                        </li>
+                        <li>
+                            <a href="#benefits">Benefits</a>
+                        </li>
+                        <li>
+                            <a href="#example">Example Setup</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <section id="about">
+                <h2>
+                    What is Dynamic Host Configuration Protocol (DHCP)?
+                </h2>
+                <p>
+                    Dynamic Host Configuration Protocol (DHCP) is a network protocol that automatically assigns IP addresses and other network configuration settings to devices on a network. It simplifies the process of managing IP addresses and reduces the need for manual configuration.
+                </p>
+            </section>
+            <section id="features">
+                <h2>
+                    Key Features of DHCP
+                </h2>
+                <ul>
+                    <li>
+                        Automatic IP address assignment.
+                    </li>
+                    <li>
+                        Centralized management of IP address allocation.
+                    </li>
+                    <li>
+                        Support for dynamic IP address renewal and release.
+                    </li>
+                    <li>
+                        Configuration of network parameters (subnet mask, default gateway, DNS servers, etc.).
+                    </li>
+                    <li>
+                        Integration with Active Directory for secure and efficient network management.
+                    </li>
+                </ul>
+            </section>
+            <section id="deployment">
+                <h2>
+                    Deployment of DHCP
+                </h2>
+                <p>
+                    To deploy DHCP in an enterprise environment, follow these steps:
+                </p>
+                <ol>
+                    <li>
+                        Install the DHCP Server role on a Windows Server.
+                    </li>
+                    <li>
+                        Configure DHCP scopes to define IP address ranges and network settings.
+                    </li>
+                    <li>
+                        Authorize the DHCP server in Active Directory to prevent unauthorized DHCP servers.
+                    </li>
+                    <li>
+                        Configure DHCP options to provide additional network configuration settings to clients.
+                    </li>
+                    <li>
+                        Monitor and manage IP address leases and DHCP server performance.
+                    </li>
+                </ol>
+            </section>
+            <section id="configuration">
+                <h2>
+                    Configuration of DHCP
+                </h2>
+                <p>
+                    DHCP can be configured with various settings to customize network behavior and optimize performance:
+                </p>
+                <ul>
+                    <li>
+                        Lease duration: Set the length of time a client can use an assigned IP address.
+                    </li>
+                    <li>
+                        Reservation: Reserve specific IP addresses for certain devices based on MAC address.
+                    </li>
+                    <li>
+                        Scope options: Define additional network settings like DNS servers, WINS servers, and domain name.
+                    </li>
+                    <li>
+                        Failover: Implement DHCP failover for high availability and load balancing.
+                    </li>
+                    <li>
+                        Security: Secure DHCP communications with features like DHCPv6 authentication and authorization.
+                    </li>
+                </ul>
+            </section>
+            <section id="benefits">
+                <h2>
+                    Benefits of Using DHCP
+                </h2>
+                <ul>
+                    <li>
+                        Simplified IP address management.
+                    </li>
+                    <li>
+                        Reduced network configuration errors.
+                    </li>
+                    <li>
+                        Efficient allocation and reuse of IP addresses.
+                    </li>
+                    <li>
+                        Centralized control and monitoring of network settings.
+                    </li>
+                    <li>
+                        Integration with Active Directory for secure and scalable network management.
+                    </li>
+                </ul>
+            </section>
+            <section id="example">
+                <h2>
+                    Example Setup of DHCP in Active Directory
+                </h2>
+                <p>
+                    In an Active Directory environment, DHCP can be configured to work seamlessly with other network services and directory services. Here's an example setup:
+                </p>
+                <ol>
+                    <li>
+                        Install the DHCP Server role on a domain-joined Windows Server.
+                    </li>
+                    <li>
+                        Configure DHCP scopes for different subnets and VLANs in the network.
+                    </li>
+                    <li>
+                        Authorize the DHCP server in Active Directory to ensure proper operation.
+                    </li>
+                    <li>
+                        Use DHCP policies to apply specific settings to different groups of clients.
+                    </li>
+                    <li>
+                        Monitor DHCP server performance and lease information using built-in tools or third-party software.
+                    </li>
+                </ol>
+
+            </section>
+        </body>
+     </html>
