@@ -109,6 +109,7 @@ int main() {
             <h2> Next Steps</h2>
             <p>Once you have a C compiler installed, you can start writing and compiling C programs. Explore the vast world of C programming and its applications in cybersecurity.</p>
         </section>
+        <br>
         <section class="fade-in">
             <p>
                 C is an older language compared to other languages in use, and yet it is still very popular. The <a href="https://www.tiobe.com/tiobe-index/">TIOBE Index</a>, which measures the popularity of programming languages, has C at the top of the list for many years. This is due to C’s use in all areas of computing.
@@ -118,6 +119,68 @@ int main() {
                 C is also common in embedded systems, which are smaller computing units that control things like home appliances, lighting controllers, and other small physical devices.
 
                 The C programming language is everywhere. Learning it will help you become a better programmer, ready for the next challenge in any field of computer science.
+            </p>
+        </section>
+        <br>
+        <br>
+        <br>
+        <br>
+        <section class="fade-in">
+            <h1>Comments</h1>
+            <p>
+                It is very important to write comments to document the code that we are writing in C language you can add comments by adding a double slash for single-line comments and /* for multi-line comments */ like the following:
+            </p>
+            <pre>
+            <code>#include &lt;stdio.h&gt; //this is to include the standard input output library
+
+                int main() { // the beginning of the main function
+                    printf("Hello, World!");/* the main function*/
+                    return 0;
+                }
+                </code>
+            </pre>
+        </section>
+        <br>
+        <br>
+        <br>
+        <section class="fade-in">
+            <h1>
+                Compiling
+            </h1>
+            <p>
+                Now that we wrote the program we are ready to compile it using gcc on our linux machine use the command below to compile your program
+            </p>
+            <pre>
+                <code>
+                    gcc program.c -o hello
+                </code>
+            </pre>
+            <p>
+                now we need to set it as an executable 
+            </p>
+            <pre>
+                <code>
+                    chmod +x hello 
+                </code>
+            </pre>
+            <p>
+                then we run it 
+            </p>
+            <pre>
+                <code>
+                    ./hello
+                </code>
+            </pre>
+        </section>
+        <br>
+        <br>
+        <br>
+        <section>
+            <h1>
+                Variables in C 
+            </h1>
+            <p>
+                Creating programs requires that you set variables and values to them so you can manipulate them 
             </p>
         </section>
     </main>
