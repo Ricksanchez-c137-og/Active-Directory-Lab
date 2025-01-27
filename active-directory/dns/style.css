@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    background-color: slategray;
+    color: greenyellow;
+    text-align: center;
+}
+
+.header{
+    background-color: black;
+    color: greenyellow;
+    padding: 10px;
+    text-align: center;
+}
+
+.container{
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+}
+
+h1{
+    color: greenyellow;
+}
+
+h2{
+    color: greenyellow;
+}
