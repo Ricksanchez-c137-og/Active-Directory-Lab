@@ -1,28 +1,96 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-             <title>Active Directory DNS</title>
-            <link rel="stylesheet" type="text/css" href="style.css">
-            <script src="script.js"></script>
-        </head>
-        <body>
-            <main>
-                <header>
-                    <h1>Active Directory DNS</h1>
-                    <p>Active Directory DNS is a DNS server that is installed on a domain controller. It is used to resolve hostnames to IP addresses and vice versa. It is also used to locate domain controllers and other services in the domain.</p>
-                    <h2>How it works</h2>
-                    <p>Active Directory DNS works by storing information about the domain in a database. This information includes the IP addresses of domain controllers, the names of domain controllers, and other information about the domain. When a client needs to resolve a hostname to an IP address, it sends a query to the Active Directory DNS server. The server looks up the information in its database and returns the IP address to the client.</p>
-                    <h2>Benefits</h2>
-                    <p>Active Directory DNS has several benefits, including:</p>
-                    <ul>
-                        <li>Integration with Active Directory: Active Directory DNS is tightly integrated with Active Directory, which makes it easy to manage and maintain.</li>
-                        <li>Dynamic updates: Active Directory DNS supports dynamic updates, which allows clients to update their own DNS records.</li>
-                        <li>Secure updates: Active Directory DNS supports secure updates, which helps prevent unauthorized changes to the DNS database.</li>
-                        <li>Scalability: Active Directory DNS is designed to scale to large networks, making it suitable for enterprise environments.</li>
-                    </ul>
-                    <h2>Conclusion</h2>
-                    <p>Active Directory DNS is an essential component of an Active Directory domain. It provides name resolution services for the domain and helps clients locate domain controllers and other services. By using Active Directory DNS, organizations can ensure that their network is secure, reliable, and scalable.</p>
-                </header>
-            </main>
-        </body>
-    </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Directory DNS</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Active Directory DNS</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Introduction</h2>
+            <p>Active Directory DNS is a crucial component of a Windows domain environment. It is a DNS server that is installed on a domain controller and is responsible for resolving hostnames to IP addresses and vice versa. Additionally, it helps clients locate domain controllers and other essential services within the domain.</p>
+        </section>
+
+        <section>
+            <h2>How Active Directory DNS Works</h2>
+            <p>Active Directory DNS operates by storing DNS records in an Active Directory-integrated database. The information includes:</p>
+            <ul>
+                <li>The IP addresses of domain controllers</li>
+                <li>The fully qualified domain names (FQDNs) of domain controllers</li>
+                <li>SRV records that allow clients to discover Active Directory services</li>
+                <li>Other domain-related DNS records such as A, CNAME, and PTR records</li>
+            </ul>
+            <p>When a client attempts to resolve a hostname to an IP address, it queries the Active Directory DNS server, which looks up the information in its database and responds with the requested IP address.</p>
+        </section>
+
+        <section>
+            <h2>Benefits of Active Directory DNS</h2>
+            <p>Active Directory DNS provides several advantages for enterprise networks:</p>
+            <ul>
+                <li><strong>Integration with Active Directory:</strong> DNS zones are stored within Active Directory, allowing for simplified management and high availability.</li>
+                <li><strong>Dynamic DNS (DDNS) Support:</strong> Clients and domain controllers can dynamically update their own DNS records, reducing administrative overhead.</li>
+                <li><strong>Secure DNS Updates:</strong> Secure dynamic updates prevent unauthorized changes, enhancing security.</li>
+                <li><strong>Replication and Redundancy:</strong> DNS zones replicate across domain controllers, ensuring consistency and fault tolerance.</li>
+                <li><strong>Scalability:</strong> Active Directory DNS is designed for enterprise-scale deployments, supporting large, complex networks.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Setting Up Active Directory DNS using PowerShell</h2>
+            <p>Follow the steps below to install and configure Active Directory DNS using PowerShell:</p>
+
+            <h3>Step 1: Install the DNS Server Role</h3>
+            <p>Run the following PowerShell command to install the DNS role on your domain controller:</p>
+            <pre><code>Install-WindowsFeature -Name DNS -IncludeManagementTools</code></pre>
+
+            <h3>Step 2: Configure a New DNS Zone</h3>
+            <p>Create a new primary forward lookup zone for your Active Directory domain:</p>
+            <pre><code>Add-DnsServerPrimaryZone -Name "example.com" -ReplicationScope "Domain" -PassThru</code></pre>
+
+            <h3>Step 3: Create an A Record for the Domain Controller</h3>
+            <p>Add an A record for your domain controller:</p>
+            <pre><code>Add-DnsServerResourceRecordA -ZoneName "example.com" -Name "dc1" -IPv4Address "192.168.1.10"</code></pre>
+
+            <h3>Step 4: Enable Secure Dynamic Updates</h3>
+            <p>Ensure only authenticated users and devices can update their DNS records:</p>
+            <pre><code>Set-DnsServerZone -Name "example.com" -DynamicUpdate Secure</code></pre>
+
+            <h3>Step 5: Restart the DNS Service</h3>
+            <p>Restart the DNS service to apply the changes:</p>
+            <pre><code>Restart-Service DNS</code></pre>
+
+            <h3>Step 6: Verify DNS Configuration</h3>
+            <p>Run the following command to verify your DNS settings:</p>
+            <pre><code>Get-DnsServerZone</code></pre>
+        </section>
+
+        <section>
+            <h2>Testing and Troubleshooting Active Directory DNS</h2>
+            <h3>Check DNS Resolution</h3>
+            <p>Use the nslookup command to test DNS resolution:</p>
+            <pre><code>nslookup dc1.example.com</code></pre>
+
+            <h3>Check DNS Event Logs</h3>
+            <p>Review event logs for any errors:</p>
+            <pre><code>Get-EventLog -LogName "DNS Server" -Newest 10</code></pre>
+
+            <h3>Flush and Register DNS Records</h3>
+            <p>Force DNS clients to register their records:</p>
+            <pre><code>ipconfig /flushdns
+ipconfig /registerdns</code></pre>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>Active Directory DNS is a vital component of a Windows domain, ensuring reliable name resolution, service discovery, and network security. Properly configuring it using PowerShell simplifies management and enhances scalability. With secure dynamic updates, replication, and integration into Active Directory, organizations can maintain a robust DNS infrastructure for their enterprise networks.</p>
+        </section>
+    </main>
+</body>
+</html>
