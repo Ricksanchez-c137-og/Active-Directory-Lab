@@ -1,0 +1,113 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: #2f4f4f; /* Dark Slate Gray */
+    color: #adff2f; /* Green Yellow */
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header Styles */
+.header {
+    background-color: black;
+    color: #adff2f;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 3px solid #adff2f;
+}
+
+/* Main Container */
+.container {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: left;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #adff2f;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Lists */
+ul, ol {
+    margin-left: 20px;
+}
+
+ul li, ol li {
+    margin-bottom: 10px;
+}
+
+/* Preformatted Code Blocks */
+pre {
+    background-color: black;
+    color: #adff2f;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: monospace;
+}
+
+/* Buttons */
+button {
+    background-color: black;
+    color: #adff2f;
+    border: 2px solid #adff2f;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #adff2f;
+    color: black;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .header {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.dark-mode pre {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.dark-mode button {
+    background-color: #e0e0e0;
+    color: #121212;
+    border-color: #e0e0e0;
+}
+
+.dark-mode button:hover {
+    background-color: #121212;
+    color: #e0e0e0;
+    border-color: #adff2f;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+}

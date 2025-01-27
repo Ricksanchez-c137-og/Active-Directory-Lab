@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Server & Active Directory Features</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Windows Server & Active Directory Features</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Introduction to Windows Server</h2>
+            <p>Windows Server is a powerful operating system designed for enterprise-level management, including identity services, security policies, and infrastructure control. It provides a robust foundation for **Active Directory** (AD), offering essential tools for centralized authentication, authorization, and policy management.</p>
+        </section>
+
+        <section>
+            <h2>Key Active Directory Features in Windows Server</h2>
+            <p>Windows Server includes several AD-related services that allow organizations to manage users, computers, and security policies efficiently. These include:</p>
+
+            <h3>1. **Active Directory Domain Services (AD DS)**</h3>
+            <p>Provides authentication and authorization, allowing administrators to manage users, groups, computers, and policies in a domain.</p>
+            <pre><code>Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools</code></pre>
+
+            <h3>2. **Active Directory Federation Services (AD FS)**</h3>
+            <p>Enables single sign-on (SSO) by federating identities across organizations, supporting cloud applications and external authentication.</p>
+            <pre><code>Install-WindowsFeature -Name ADFS-Federation -IncludeManagementTools</code></pre>
+
+            <h3>3. **Active Directory Certificate Services (AD CS)**</h3>
+            <p>Provides public key infrastructure (PKI) for secure authentication, encryption, and digital certificates.</p>
+            <pre><code>Install-WindowsFeature -Name AD-Certificate -IncludeManagementTools</code></pre>
+
+            <h3>4. **Active Directory Lightweight Directory Tools (AD LDS)**</h3>
+            <p>A lightweight version of AD DS, useful for applications that require directory services but do not need full AD integration.</p>
+            <pre><code>Install-WindowsFeature -Name ADLDS -IncludeManagementTools</code></pre>
+
+            <h3>5. **Active Directory Rights Management Services (AD RMS)**</h3>
+            <p>Protects sensitive information using rights management policies, ensuring that only authorized users can access certain data.</p>
+            <pre><code>Install-WindowsFeature -Name ADRMS -IncludeManagementTools</code></pre>
+
+            <h3>6. **Group Policy Management (GPMC)**</h3>
+            <p>Allows administrators to enforce security policies and configure system settings across multiple computers.</p>
+            <pre><code>Install-WindowsFeature -Name GPMC -IncludeManagementTools</code></pre>
+
+            <h3>7. **Windows Deployment Services (WDS)**</h3>
+            <p>Facilitates network-based installation of Windows operating systems to clients and servers.</p>
+            <pre><code>Install-WindowsFeature -Name WDS -IncludeManagementTools</code></pre>
+
+            <h3>8. **DHCP & DNS Server Role Integration**</h3>
+            <p>Windows Server integrates with **DHCP** (Dynamic Host Configuration Protocol) and **DNS** (Domain Name System) to automate IP address assignment and domain name resolution.</p>
+            <pre><code>Install-WindowsFeature -Name DHCP,DNS -IncludeManagementTools</code></pre>
+        </section>
+
+        <section>
+            <h2>Setting Up Active Directory Domain Services (AD DS)</h2>
+            <h3>Step 1: Install AD DS Role</h3>
+            <p>Use PowerShell to install the **Active Directory Domain Services** role:</p>
+            <pre><code>Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools</code></pre>
+
+            <h3>Step 2: Promote Server to a Domain Controller</h3>
+            <p>Replace **example.local** with your desired domain name:</p>
+            <pre><code>Install-ADDSForest -DomainName "example.local" -CreateDnsDelegation:$false -DatabasePath "C:\NTDS" -SysvolPath "C:\SYSVOL" -LogPath "C:\Logs" -InstallDns:$true -Force</code></pre>
+
+            <h3>Step 3: Create a New Organizational Unit (OU)</h3>
+            <p>Organize users and computers within specific OUs:</p>
+            <pre><code>New-ADOrganizationalUnit -Name "IT Department" -Path "DC=example,DC=local"</code></pre>
+
+            <h3>Step 4: Add a New User to Active Directory</h3>
+            <p>Create a new AD user with an initial password:</p>
+            <pre><code>New-ADUser -Name "John Doe" -GivenName "John" -Surname "Doe" -UserPrincipalName "jdoe@example.local" -Path "OU=IT Department,DC=example,DC=local" -AccountPassword (ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force) -Enabled $true</code></pre>
+
+            <h3>Step 5: Assign a User to a Security Group</h3>
+            <p>Add a user to an Active Directory group:</p>
+            <pre><code>Add-ADGroupMember -Identity "Domain Admins" -Members "jdoe"</code></pre>
+        </section>
+
+        <section>
+            <h2>Managing Active Directory with PowerShell</h2>
+            <h3>Check Active Directory Health</h3>
+            <p>Monitor the health of Active Directory services:</p>
+            <pre><code>dcdiag /v</code></pre>
+
+            <h3>Get a List of Active Directory Users</h3>
+            <p>Retrieve a list of all users in the domain:</p>
+            <pre><code>Get-ADUser -Filter *</code></pre>
+
+            <h3>Find Locked-Out Users</h3>
+            <p>Identify users who have been locked out:</p>
+            <pre><code>Search-ADAccount -LockedOut | Select-Object Name, SamAccountName</code></pre>
+
+            <h3>Reset a User's Password</h3>
+            <p>Reset the password for a specific user:</p>
+            <pre><code>Set-ADAccountPassword -Identity "jdoe" -NewPassword (ConvertTo-SecureString "NewP@ssw0rd" -AsPlainText -Force) -Reset</code></pre>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>Windows Server is a robust platform for managing **Active Directory**, offering a comprehensive set of tools for **identity management, security enforcement, and automated deployment**. By leveraging **PowerShell**, administrators can efficiently deploy, configure, and maintain an enterprise-level Active Directory infrastructure.</p>
+        </section>
+    </main>
+</body>
+</html>

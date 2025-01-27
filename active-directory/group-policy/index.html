@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Policy (GPO)</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Group Policy (GPO) in Active Directory</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>Introduction</h2>
+            <p>Group Policy (GPO) is a feature in Windows Active Directory that provides centralized management and configuration of operating systems, applications, and user settings. It enables administrators to define security policies, enforce settings, and automate administrative tasks across multiple computers in a domain environment.</p>
+        </section>
+
+        <section>
+            <h2>How Group Policy Works</h2>
+            <p>Group Policy Objects (GPOs) are collections of policies that define rules and configurations for users and computers in an Active Directory domain. These policies are stored in:</p>
+            <ul>
+                <li><strong>Group Policy Container (GPC):</strong> Stored in Active Directory and replicated to domain controllers.</li>
+                <li><strong>Group Policy Template (GPT):</strong> Stored in the SYSVOL folder on domain controllers and contains actual policy settings.</li>
+            </ul>
+            <p>When a user logs in or a computer starts, the Group Policy settings are applied according to the hierarchy of:</p>
+            <ol>
+                <li>Local GPO</li>
+                <li>Site GPO</li>
+                <li>Domain GPO</li>
+                <li>Organizational Unit (OU) GPO</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Benefits of Group Policy</h2>
+            <p>Group Policy provides several advantages for system administrators:</p>
+            <ul>
+                <li><strong>Centralized Management:</strong> Configure settings for multiple users and computers from a single location.</li>
+                <li><strong>Security Enforcement:</strong> Enforce security settings like password policies, firewall rules, and software restrictions.</li>
+                <li><strong>Automation:</strong> Deploy software, scripts, and settings without manual configuration.</li>
+                <li><strong>Consistency:</strong> Ensure all users and systems follow standardized configurations.</li>
+                <li><strong>Improved Performance:</strong> Control startup applications and optimize system performance.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Configuring Group Policy using PowerShell</h2>
+            <p>Administrators can use PowerShell to create, configure, and manage Group Policy Objects (GPOs). Below are key PowerShell commands for managing GPOs.</p>
+
+            <h3>Step 1: Install Group Policy Management Tools</h3>
+            <p>Ensure that the required tools are installed on your system:</p>
+            <pre><code>Install-WindowsFeature -Name GPMC -IncludeManagementTools</code></pre>
+
+            <h3>Step 2: Create a New Group Policy Object</h3>
+            <p>Create a new GPO in Active Directory:</p>
+            <pre><code>New-GPO -Name "Security Policy" -Comment "Enforcing security settings"</code></pre>
+
+            <h3>Step 3: Link the GPO to an Organizational Unit (OU)</h3>
+            <p>Apply the GPO to a specific OU containing users or computers:</p>
+            <pre><code>New-GPLink -Name "Security Policy" -Target "OU=Workstations,DC=example,DC=com"</code></pre>
+
+            <h3>Step 4: Configure a Specific Policy Setting</h3>
+            <p>Enable the "Disable Control Panel" policy for users:</p>
+            <pre><code>Set-GPRegistryValue -Name "Security Policy" -Key "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -ValueName "NoControlPanel" -Type DWord -Value 1</code></pre>
+
+            <h3>Step 5: Enforce the GPO</h3>
+            <p>Ensure that the policy settings are applied and enforced:</p>
+            <pre><code>Set-GPInheritance -Target "OU=Workstations,DC=example,DC=com" -IsBlocked $false</code></pre>
+
+            <h3>Step 6: Force Group Policy Update</h3>
+            <p>Apply the new settings immediately on client computers:</p>
+            <pre><code>gpupdate /force</code></pre>
+
+            <h3>Step 7: Verify Group Policy Application</h3>
+            <p>Check applied policies using the following command:</p>
+            <pre><code>gpresult /r</code></pre>
+        </section>
+
+        <section>
+            <h2>Common Group Policy Configurations</h2>
+
+            <h3>1. Enforcing Strong Password Policies</h3>
+            <p>Set password complexity, expiration, and length policies:</p>
+            <pre><code>Set-GPRegistryValue -Name "Security Policy" -Key "HKLM\System\CurrentControlSet\Services\Netlogon\Parameters" -ValueName "MaximumPasswordAge" -Type DWord -Value 30</code></pre>
+
+            <h3>2. Restricting USB Device Access</h3>
+            <p>Block USB storage devices to prevent unauthorized data transfers:</p>
+            <pre><code>Set-GPRegistryValue -Name "Security Policy" -Key "HKLM\SYSTEM\CurrentControlSet\Services\USBSTOR" -ValueName "Start" -Type DWord -Value 4</code></pre>
+
+            <h3>3. Disabling Guest Accounts</h3>
+            <p>Enhance security by disabling guest logins:</p>
+            <pre><code>Set-GPRegistryValue -Name "Security Policy" -Key "HKLM\SAM\Domains\Account\Users\000001F4" -ValueName "F" -Type Binary -Value "0000"</code></pre>
+
+            <h3>4. Enforcing Firewall Rules</h3>
+            <p>Enable Windows Firewall and block all incoming connections:</p>
+            <pre><code>Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled True</code></pre>
+        </section>
+
+        <section>
+            <h2>Troubleshooting Group Policy Issues</h2>
+            <h3>1. Checking GPO Replication Across Domain Controllers</h3>
+            <p>Verify if Group Policy changes have replicated successfully:</p>
+            <pre><code>repadmin /showrepl</code></pre>
+
+            <h3>2. Viewing Applied Group Policies on a Client</h3>
+            <p>Run the following command to see which GPOs are applied:</p>
+            <pre><code>gpresult /scope computer /v</code></pre>
+
+            <h3>3. Resetting Group Policy to Default</h3>
+            <p>Revert all Group Policy settings to their default state:</p>
+            <pre><code>RD /S /Q "C:\Windows\System32\GroupPolicyUsers"
+RD /S /Q "C:\Windows\System32\GroupPolicy"
+gpupdate /force</code></pre>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>Group Policy is an essential tool for IT administrators managing an enterprise environment. It allows centralized control over security settings, user restrictions, and system configurations. By using PowerShell, administrators can efficiently deploy, configure, and troubleshoot GPOs to enforce organizational policies across the network.</p>
+        </section>
+    </main>
+</body>
+</html>
