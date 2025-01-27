@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Directory</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Active Directory (AD)</h1>
+    </header>
+
+    <main class="container">
+        <section>
+            <h2>What is Active Directory?</h2>
+            <p>Active Directory (AD) is a **directory service** developed by Microsoft for Windows domain networks. It provides authentication, authorization, and management of users, computers, and other networked devices within an organization.</p>
+        </section>
+
+        <section>
+            <h2>Key Features of Active Directory</h2>
+            <ul>
+                <li><strong>Centralized Authentication & Authorization:</strong> AD manages user credentials and access control.</li>
+                <li><strong>Group Policy Management:</strong> Enforce security settings and configurations across domain-joined devices.</li>
+                <li><strong>Scalability & Redundancy:</strong> Multi-domain and multi-forest configurations ensure scalability.</li>
+                <li><strong>Lightweight Directory Access Protocol (LDAP):</strong> Supports LDAP for directory queries and authentication.</li>
+                <li><strong>Single Sign-On (SSO):</strong> Users can log in once and access multiple services without re-authentication.</li>
+                <li><strong>Active Directory Federation Services (AD FS):</strong> Provides secure identity federation for cloud services.</li>
+                <li><strong>Replication & Fault Tolerance:</strong> AD replicates data across multiple domain controllers for reliability.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Active Directory Components</h2>
+            <h3>1. **Domain Controller (DC)**</h3>
+            <p>A **Domain Controller (DC)** is a server that stores the AD database and handles authentication requests.</p>
+
+            <h3>2. **Organizational Units (OUs)**</h3>
+            <p>OUs are logical containers used to organize users, computers, and groups for better management.</p>
+
+            <h3>3. **Active Directory Schema**</h3>
+            <p>The schema defines the structure of objects stored in AD, including users, groups, and devices.</p>
+
+            <h3>4. **Global Catalog (GC)**</h3>
+            <p>The **Global Catalog** allows users to search for objects across an entire AD forest.</p>
+
+            <h3>5. **FSMO (Flexible Single Master Operations) Roles**</h3>
+            <p>AD has five FSMO roles that handle specific tasks in domain management:</p>
+            <ul>
+                <li>Schema Master</li>
+                <li>Domain Naming Master</li>
+                <li>RID Master</li>
+                <li>PDC Emulator</li>
+                <li>Infrastructure Master</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Setting Up Active Directory with PowerShell</h2>
+            <h3>Step 1: Install Active Directory Domain Services (AD DS)</h3>
+            <pre><code>Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools</code></pre>
+
+            <h3>Step 2: Promote Server to Domain Controller</h3>
+            <p>Replace **example.local** with your desired domain name:</p>
+            <pre><code>Install-ADDSForest -DomainName "example.local" -CreateDnsDelegation:$false -DatabasePath "C:\NTDS" -SysvolPath "C:\SYSVOL" -LogPath "C:\Logs" -InstallDns:$true -Force</code></pre>
+
+            <h3>Step 3: Create an Organizational Unit (OU)</h3>
+            <pre><code>New-ADOrganizationalUnit -Name "IT Department" -Path "DC=example,DC=local"</code></pre>
+
+            <h3>Step 4: Create a New User in Active Directory</h3>
+            <pre><code>New-ADUser -Name "John Doe" -GivenName "John" -Surname "Doe" -UserPrincipalName "jdoe@example.local" -Path "OU=IT Department,DC=example,DC=local" -AccountPassword (ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force) -Enabled $true</code></pre>
+
+            <h3>Step 5: Add a User to a Security Group</h3>
+            <pre><code>Add-ADGroupMember -Identity "Domain Admins" -Members "jdoe"</code></pre>
+
+            <h3>Step 6: Verify Active Directory Installation</h3>
+            <pre><code>Get-ADDomain</code></pre>
+        </section>
+
+        <section>
+            <h2>Active Directory Security Best Practices</h2>
+            <ul>
+                <li><strong>Enable Multi-Factor Authentication (MFA):</strong> Improve security by requiring MFA for logins.</li>
+                <li><strong>Implement Least Privilege Access:</strong> Restrict user and admin privileges to minimize risks.</li>
+                <li><strong>Use Group Policies to Enforce Security:</strong> Apply security settings across the domain.</li>
+                <li><strong>Monitor AD Logs:</strong> Use SIEM solutions like **Splunk, ELK, or WAZUH** for log analysis.</li>
+                <li><strong>Regularly Audit Active Directory:</strong> Check for stale accounts and unauthorized changes.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Common Active Directory Troubleshooting Commands</h2>
+            <h3>Check Domain Controller Health</h3>
+            <pre><code>dcdiag /v</code></pre>
+
+            <h3>Check Active Directory Replication</h3>
+            <pre><code>repadmin /replsummary</code></pre>
+
+            <h3>Find Locked-Out Users</h3>
+            <pre><code>Search-ADAccount -LockedOut | Select-Object Name, SamAccountName</code></pre>
+
+            <h3>Reset a User’s Password</h3>
+            <pre><code>Set-ADAccountPassword -Identity "jdoe" -NewPassword (ConvertTo-SecureString "NewP@ssw0rd" -AsPlainText -Force) -Reset</code></pre>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>Active Directory is a crucial service for identity and access management in enterprise environments. With its authentication, policy enforcement, and security capabilities, AD helps organizations maintain a secure and efficient IT infrastructure.</p>
+        </section>
+    </main>
+</body>
+</html>
